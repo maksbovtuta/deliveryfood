@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    background: linear-gradient(180deg, rgba(245, 245, 245, 0.00) 1.04%, #F5F5F5 100%);
 }
 
 .container{
@@ -231,4 +232,46 @@ header{
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: 30px;
+}
+
+footer{
+    background-color: #fff;
+    height: 150px;
+    margin-top: 90px;
+
+}
+
+.con-footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.menu-footer ul{
+    display: flex;
+    gap: 10px;
+    list-style-type: none;
+}
+
+.menu-footer a{
+    text-decoration: none;
+}
+
+.menu-footer a{
+    color: #595959;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.menu-logo{
+    display: flex;
+    align-items: center;
+}
+
+.menu-soc img{
+    padding-left: 21px;
 }
