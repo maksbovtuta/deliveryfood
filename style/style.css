@@ -1,6 +1,7 @@
 body{
     margin: 0;
     background: linear-gradient(180deg, rgba(245, 245, 245, 0.00) 1.04%, #F5F5F5 100%);
+    overflow-x: hidden;
 }
 
 .container{
@@ -15,10 +16,14 @@ header{
     align-items: center;
 }
 
+a{
+    text-decoration: none;
+}
+
 .input-search{
     background: #ffffff;
     border: 1px solid #d9d9d9;
-    width: 690px;
+    width: 43rem;
     height: 40px;
     font-size: 16px;
     line-height: 24px;
@@ -136,7 +141,7 @@ header{
 }
 
 .search-main{
-    width: 306px;
+    width: 19rem;
     height: 34px;
     background-image: url(../assets/img/search.svg);
     background-repeat: no-repeat;
@@ -274,4 +279,117 @@ footer{
 
 .menu-soc img{
     padding-left: 21px;
+}
+
+.down-header{
+    display: flex;
+}
+
+.down-header h1{
+    color: #000;
+font-family: Roboto;
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.star-rest{
+    margin-right: 26px;
+}
+
+.con-rest{
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.cup-price{
+    display: flex;
+    align-items: center;
+}
+
+.btn2-rest{
+    background: var(--daybreak-blue-blue-6, #1890FF);
+    /* background-image: url(../assets/img/icon0container.svg);
+    background-position: left 8px center;
+    background-repeat: no-repeat; */
+    border: none;
+    color: white;
+    /* border: none; */
+    align-items: center;
+    display: flex;
+    /* width: 124px; */
+    height: 40px;
+}
+
+.card2{
+    border-radius: 7px;
+    background: var(--gray-gray-1, #FFF);
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.05);
+
+    width: 384px;
+    height: 413.989px;
+    flex-shrink: 0;
+}
+.p1{
+    color: #000;
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 32px; /* 133.333% */
+    padding-left: 24px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+}
+
+.p2{
+    color: var(--gray-gray-7, #8C8C8C);
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 24px;
+    padding-right: 99px;
+    margin-top: 0px;
+}
+
+.cup-price{
+    padding-left: 24px;
+}
+
+.price-p{
+    padding-left: 32px;
+}
+
+.card-rest{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+}
+
+.p3{
+    padding-right: 10px;
+}
+
+
+
+.cup-price p{
+    color: #000;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 32px; /* 160% */
+}
+
+
+.card-image{
+    border-radius: 7px 7px 0px 0px;
+    width: 384px;
+height: 212.226px;
+flex-shrink: 0;
+    
 }
