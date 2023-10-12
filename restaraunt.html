@@ -6,16 +6,23 @@
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/media.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <script async src="script/JS/wow.min.js"></script>
+    <script async src="script/JS/main.js"></script>
+    
 </head>
 <body>
     
         <div class="container">
             <header>
-                <img src="assets/img/logo.png" alt="logo" class="logo">
+                <img src="assets/img/logo.png" alt="logo" class="logo"/>
                 <input type="text" class="input-search" placeholder="Адрес доставки">
                 <div class="btn-header">
                     <button class="btn1"><img class="img-btn1" src="assets/img/user.svg">Войти</button>
-                    <button class="btn2"><img src="assets/img/icon0container.svg">Корзина</button>
+                    <button class="btn2" id="cart-button"><img src="assets/img/icon0container.svg">Корзина</button>
                 </div>
             </header>
         </div>
@@ -37,7 +44,7 @@
             </div>
         </div>
         <div class="card-rest">
-            <div class="card2">
+            <div class="card2 wow animate__animated animate__fadeInUp" >
                 <img class="card-image" src="assets/img/tovar/image.png">
                 <p class="p1">Ролл вугор стандарт</p>
                 <p class="p2">Рис, вугор, унаги, кунжут, водорослі норі</p>
@@ -46,7 +53,7 @@
                     <p class="price-p">250 UAH</p>
                 </div>
             </div>
-            <div class="card2">
+            <div class="card2 wow animate__animated animate__fadeInUp">
                 <img class="card-image" src="assets/img/tovar/image-2.png">
                 <p class="p1">Ролл каліфорнія стандарт</p>
                 <p class="p2 p3">Рис, лосось, авокадо, огірок, майонез, масаго ікра, водорості норі.</p>
@@ -55,7 +62,7 @@
                     <p class="price-p">250 UAH</p>
                 </div>
             </div>
-            <div class="card2">
+            <div class="card2 wow animate__animated animate__fadeInUp">
                 <img class="card-image" src="assets/img/tovar/image-4.png">
                 <p class="p1">Окинава стандарт</p>
                 <p class="p2 p3">Рис, відварна креветка, сир вершковий, лосось, огірок свіжий.</p>
@@ -64,7 +71,7 @@
                     <p class="price-p">250 UAH</p>
                 </div>
             </div>
-            <div class="card2">
+            <div class="card2 wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
                 <img class="card-image" src="assets/img/tovar/image-1.png">
                 <p class="p1">Цезар макі xl</p>
                 <p class="p2 p3">Рис, куряча грудка копчена, масаго ікра, томат, айсберг, соус цезар...</p>
@@ -73,22 +80,85 @@
                     <p class="price-p">250 UAH</p>
                 </div>
             </div>
-            <div class="card2">
+            <div class="card2 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
                 <img class="card-image" src="assets/img/tovar/image-3.png">
                 <p class="p1">Ясай макі стандарт</p>
                 <p class="p2 p3">Рис, свіжий помідор, перець болгарський, авокадо, огірок, айсберг</p>
                 <div class="cup-price">
                     <button class="btn2-rest">В корзину<img src="assets/img/icon-container.svg"></button>
-                    <p class="price-p">250 UAH</p>
+                    <p class="price-p">250 UAH</p>s
                 </div>
             </div>
-            <div class="card2">
+            <div class="card2 wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
                 <img class="card-image" src="assets/img/tovar/image-5.png">
                 <p class="p1">Ролл з креветкой</p>
                 <p class="p2 p3">Рис, водорості норі, відварні креветки, сир вершковий, огірки</p>
                 <div class="cup-price">
                     <button class="btn2-rest">В корзину<img src="assets/img/icon-container.svg"></button>
                     <p class="price-p">250 UAH</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="korzina">
+        <div class="korzina-modal">
+            <div class="korzina-header">
+                <h3 class="title-korz">Корзина</h3>
+                <button class="close">x</button>
+            </div>
+            <div class="korzina-body">
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="korzina-footer">
+                <span class="pricetag">1250 UAH</span>
+                <div class="footer-buttons">
+                    <button class="button btn1">Оформити заказ</button>
+                    <button class="button btn2">Скасувати</button>
                 </div>
             </div>
         </div>
