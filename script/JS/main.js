@@ -17,3 +17,7 @@ close.addEventListener("click", function (event) {
 // }
 
 new WOW().init();
+
+
+
+console.log("hellp");

@@ -12,14 +12,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/media.css">
+    <script async src="script/JS/twomain.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="assets/img/logo.png" alt="logo" class="logo">
+            <a href="main.html"><img src="assets/img/logo.png" alt="logo" class="logo"></a>
             <input type="text" class="input-search" placeholder="Адрес доставки">
             <div class="btn-header">
-                <button class="btn1"><img class="img-btn1" src="assets/img/user.svg">Войти</button>
+                <span class="usernamehead"></span>
+                <button class="btn1 button-auth"><img class="img-btn1" src="assets/img/user.svg">Войти</button>
+                <button class="btn1 button-Out"><img class="img-btn1" src="assets/img/user.svg">Выйти</button>
                 <button class="btn2"><img src="assets/img/icon0container.svg">Корзина</button>
             </div>
         </header>
@@ -164,6 +167,23 @@
             </div>
         </div>
     </div>
+    <div class="modal-auth">
+        <h2>Авторизація</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Ім'я користувача:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="buttons-avto">
+                <button>Увійти</button>
+                <button class="button-auth-cancel">Скасувати</button>
+            </div>
+        </form>
+    </div>
     <footer>
         <div class="con-footer">
             <div class="menu-logo">
@@ -172,7 +192,7 @@
                 </div>
                 <div class="menu-footer">
                     <ul>
-                        <li><a href="#">Ресторанам</a></li>
+                        <li><a href="main.html">Ресторанам</a></li>
                         <li><a href="#">Кур'єрам</a></li>
                         <li><a href="#">Пресс-центр</a></li>
                         <li><a href="#">Контакти</a></li>
@@ -185,6 +205,7 @@
             </div>
         </div>
     </footer>
+    
 
 </body>
 </html>

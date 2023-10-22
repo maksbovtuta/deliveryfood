@@ -518,3 +518,76 @@ line-height: 22px; /* 157.143% */
     padding: 16px 8px;
 }
 
+.avto{
+    display: flex;
+    align-items: center;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.modal-auth{
+    display: none;
+    position: fixed;
+    left: 550px;
+    top: 100px;
+    right: 550px;
+    background-color: white;
+    height: 200px;
+    border-radius: 15px;
+    border: 2px solid black;
+
+}
+
+.modal-auth.is-open {
+    display: block;
+}
+
+.usernamehead{
+    display: none;
+}
+
+.btn-header button.btn1.button-Out {
+    display: none;
+    width: 96px;
+    height: 40px;
+    align-items: center;
+    font-size: 16px;
+}
+
+
+.form-group{
+    padding-bottom: 20px;
+}
+
+#loginForm{
+    padding-left: 40px;
+}
+
+.modal-auth h2{
+    padding-left: 40px;
+}
+
+.modal-auth button{
+    border-radius: 2px;
+    background: var(--daybreak-blue-blue-6, #1890FF);
+    /* background-image: url(../assets/img/user.svg);
+    background-repeat: no-repeat;
+    background-position: left 10px center; */
+    /* background-position: left 11px center; */
+    border: none;
+    color: white;
+    margin-right: 10px;
+}
+
+.usernamehead{
+    padding-top: 8px;
+    padding-right: 10px;
+}
+
+
+
