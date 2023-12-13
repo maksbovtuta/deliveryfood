@@ -46,6 +46,7 @@ function notAuthorized() {
             LoginForm.reset();
             checkAuth();
         } else {
+            // Вот не работает у меня красная обводка
             loginInput.style.border = '444px solid #ff0000';
             loginInput.value = '';
         }
