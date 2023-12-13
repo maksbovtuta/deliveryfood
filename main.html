@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/media.css">
+    <script async src="script/JS/main.js"></script>
     <script async src="script/JS/twomain.js"></script>
+    <script async src="script/JS/disabledScroll.js"></script>
 </head>
 <body>
     <div class="container">
@@ -167,22 +169,87 @@
             </div>
         </div>
     </div>
-    <div class="modal-auth">
-        <h2>Авторизація</h2>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">Ім'я користувача:</label>
-                <input type="text" id="username" name="username" required>
+    <div class="korzina">
+        <div class="korzina-modal">
+            <div class="korzina-header">
+                <h3 class="title-korz">Корзина</h3>
+                <button class="close">x</button>
             </div>
-            <div class="form-group">
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required>
+            <div class="korzina-body">
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                <div class="food-row">
+                    <span class="food-name">Ролл Вугор</span>
+                    <strong class="food-price">250 UAH</strong>
+                    <div class="food-counter">
+                        <button class="counter-button">+</button>
+                        <span class="counter">1</span>
+                        <button class="counter-button">-</button>
+                    </div>
+                </div>
+                
             </div>
-            <div class="buttons-avto">
-                <button>Увійти</button>
-                <button class="button-auth-cancel">Скасувати</button>
+            <div class="korzina-footer">
+                <span class="pricetag">1250 UAH</span>
+                <div class="footer-buttons">
+                    <button class="button btn1">Оформити заказ</button>
+                    <button class="button btn2">Скасувати</button>
+                </div>
             </div>
-        </form>
+        </div>
+    </div>
+    <div class="modal-under">
+        <div class="modal-auth">
+            <h2>Авторизація</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Ім'я користувача:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="buttons-avto">
+                    <button>Увійти</button>
+                    <button class="button-auth-cancel">Скасувати</button>
+                </div>
+            </form>
+        </div>
     </div>
     <footer>
         <div class="con-footer">

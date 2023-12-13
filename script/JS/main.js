@@ -1,4 +1,4 @@
-const cartBtn = document.querySelector('#cart-button');
+const cartBtn = document.querySelector('.btn2');
 const korzina = document.querySelector('.korzina');
 const close = document.querySelector('.close');
 // cartBtn.addEventListener("click", toggleModal);

@@ -5,6 +5,7 @@ const LoginForm = document.querySelector("#loginForm");
 const loginInput = document.querySelector("#username");
 const userhead = document.querySelector(".usernamehead");
 const ButtonOut = document.querySelector(".button-Out");
+const UnderModal = document.querySelector(".modal-under");
 
 
 let login = localStorage.getItem('gloDel');
@@ -35,28 +36,31 @@ function notAuthorized() {
     console.log("notavto");
     function logIn(event){
         event.preventDefault();
-        login = loginInput.value;
+        if(loginInput.value.trim()) {
+            login = loginInput.value;
+            localStorage.setItem('gloDel', login);
+            ToogleModal();
+            ButtonAuth.removeEventListener("click", ToogleModal);
+            ButtonAuthCancel.removeEventListener("click", ToogleModal);
+            LoginForm.removeEventListener("submit", logIn);
+            LoginForm.reset();
+            checkAuth();
+        } else {
+            loginInput.style.border = '444px solid #ff0000';
+            loginInput.value = '';
+        }
         
-        localStorage.setItem('gloDel', login);
-
-        ToogleModal();
-        ButtonAuth.removeEventListener("click", ToogleModal 
-            // modalAuth.classList.add("is-open");
-            // ToogleModal();
-        );
-        
-        ButtonAuthCancel.removeEventListener("click", ToogleModal 
-            // modalAuth.classList.remove("is-open");
-            // ToogleModal();
-        );
-    
-        LoginForm.removeEventListener("submit", logIn);
-        // logIn.reset();
-        checkAuth();
     }
 
     function ToogleModal(){
         modalAuth.classList.toggle("is-open");
+        UnderModal.classList.toggle("is-open");
+        loginInput.style.borderColor = '';
+        if (modalAuth.classList.contains("is-open")){
+            disableScroll();
+        } else {
+            enableScroll();
+        }
     }
     ButtonAuth.addEventListener("click", ToogleModal 
         // modalAuth.classList.add("is-open");
@@ -69,6 +73,13 @@ function notAuthorized() {
     )
 
     LoginForm.addEventListener("submit", logIn);
+    UnderModal.addEventListener('click', function (event) {
+        if (event.target.classList.contains('is-open')) {
+            ToogleModal()
+        }
+    })
+    
+
 }
 
 function checkAuth(){
@@ -81,6 +92,7 @@ function checkAuth(){
     }
     
 }
+
 
 checkAuth();
 
