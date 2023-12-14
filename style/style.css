@@ -487,6 +487,12 @@ line-height: 32px; /* 160% */
     margin-right: 10px;
 }
 
+.hide{
+    display: none;
+}
+
+
+
 .counter-button{
     display: flex;
     align-items: center;
