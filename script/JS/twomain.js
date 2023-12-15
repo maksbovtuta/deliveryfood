@@ -184,6 +184,11 @@ logo.addEventListener('click', function(){
     mainGol.classList.remove('hide');
     conRest.classList.add('hide');
     conRest.textContent = '';
+});
+
+
+new Swiper('.swiper-container',{
+    sliderPerView: 1,
 })
 
 
