@@ -13,6 +13,21 @@ const conRest = document.querySelector(".con-rest");
 const logo = document.querySelector(".logo");
 const cardRest = document.querySelector(".card-rest");
 
+const getData = async function(url){
+
+    const response = await fetch(url);
+
+    if(!response.ok){
+        throw new Error(`Ошибка по адресу ${url}, статус ошибка ${response.status}!`)
+    }
+
+    return await response.json();
+
+};
+
+getData('./db/partners.json').then(function(data){
+    data.forEach(createCardRestaurant)
+});
 
 let login = localStorage.getItem('gloDel');
 function authorized() {
@@ -103,26 +118,41 @@ function checkAuth(){
 
 checkAuth();
 
-function createCardRestaurant() {
+function createCardRestaurant(restaraunt) {
+
+    const {
+        image,
+        kitchen,
+        name,
+        price,
+        stars,
+        products,
+        time_of_delivery: timeOfDelivery
+
+
+    } = restaraunt;
+
+    console.log(image)
+
     const card = `
-    <a href="restaraunt.html">
+    <a href="restaraunt.html" data-products="${products}">
                 <div class="card card1">
-                    <img src="assets/img/img3.png">
+                    <img class="cardimg" src="${image}">
                     <div class="name-time">
-                        <h3>СУШИЯ</h3>
-                        <p>55 хв</p>
+                        <h3>${name}</h3>
+                        <p>${timeOfDelivery} хв</p>
                     </div>
                     <div class="star-price-name">
                         <div class="star">
                             <img class="stark" src="assets/img/Vector.svg">
-                            <p class="star-p">4.3</p>
+                            <p class="star-p">${stars}</p>
                         </div>
                         <div class="star">
-                            <p class="star-p2">От 1100 грн</p>
+                            <p class="star-p2">От ${price} грн</p>
                         </div>
                         <div class="star">
                             <img class="eclp" src="assets/img/Ellipse1.svg">
-                            <p class="star-p3">Суші</p>
+                            <p class="star-p3">${kitchen}</p>
                         </div>
                     </div>
 
@@ -136,39 +166,44 @@ function createCardRestaurant() {
 
 
 
-function openGoods(event) {
+document.addEventListener('click', function(event) {
     const restaurantCard = event.target.closest('.card');
 
-    if (restaurantCard){
-        event.preventDefault();
-        containerPromo.classList.add('hide');
-        mainGol.classList.add('hide');
-        conRest.classList.remove('hide');
-
-        
-
-        
+    if (restaurantCard) {
+        const link = event.target.closest('a');
+        if (link) {
+            event.preventDefault(); // Предотвращение стандартного действия ссылки
+            containerPromo.classList.add('hide');
+            mainGol.classList.add('hide');
+            conRest.classList.remove('hide');
+            getData(`./db/${link.dataset.products}`).then(function(data){
+                data.forEach(createCardGood);
+            });
+        }
     }
-
-
-}
+});
 
     createCardRestaurant();
-        createCardRestaurant();
-        createCardRestaurant();
+        
 
-function createCardGood() {
+function createCardGood( {description,
+    
+    image,
+    name,
+    price} ) {
     const card = document.createElement('div');
-    card.className = 'card wow animate__animated animate__fadeInUp';
+    card.className = 'card cardtow wow animate__animated animate__fadeInUp';
+
+    
 
     card.insertAdjacentHTML('beforeend',`
        
-            <img class="card-image" src="assets/img/tovar/image.png">
-            <p class="p1">Ролл вугор стандарт</p>
-            <p class="p2">Рис, вугор, унаги, кунжут, водорослі норі</p>
+            <img class="card-image" src="${image}">
+            <p class="p1">${name}</p>
+            <p class="p2">${description}</p>
             <div class="cup-price">
                 <button class="btn2-rest">В корзину<img src="assets/img/icon-container.svg"></button>
-                <p class="price-p">250 UAH</p>
+                <p class="price-p">${price} UAH</p>
             </div>
         
     `);
