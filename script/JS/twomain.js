@@ -12,7 +12,46 @@ const mainGol = document.querySelector(".main-gol");
 const conRest = document.querySelector(".con-rest");
 const logo = document.querySelector(".logo");
 const cardRest = document.querySelector(".card-rest");
+const inputSearch = document.querySelector(".search-main");
+const restarauntTitle = document.querySelector(".titlerest");
 
+inputSearch.addEventListener('keypress', function(event){
+
+    
+
+    if(event.charCode === 13) {
+        const value = event.target.value.trim();
+
+        if(!value){
+            return;
+        }
+        console.log(value);
+        getData('./db/partners.json')
+        .then(function(data){ 
+            return data.map(function(partner) {
+                return partner.products;
+            });
+        })
+        .then(function(linkProduct){
+            linkProduct.forEach(function(link){
+                getData(`./db/${link}`)
+                    .then(function(data){
+                        const resultSearch= data.filter(function(item){ 
+                            return item.name.includes(value);
+                         })
+
+                        containerPromo.classList.add('hide');
+                        mainGol.classList.add('hide');
+                        conRest.classList.remove('hide');
+                        restarauntTitle.textContent = "Результат пошуку";
+
+                        resultSearch.forEach(createCardGood);
+                    })
+            })
+        }) 
+    }
+    
+})
 const getData = async function(url){
 
     const response = await fetch(url);
@@ -91,7 +130,7 @@ function notAuthorized() {
     
     ButtonAuthCancel.addEventListener("click", ToogleModal 
         // modalAuth.classList.remove("is-open");
-        // ToogleModal();
+        // ToogleModal(;)
     )
 
     LoginForm.addEventListener("submit", logIn);
@@ -132,8 +171,8 @@ function createCardRestaurant(restaraunt) {
 
     } = restaraunt;
 
-    console.log(image)
-
+    // console.log(image)
+    
     const card = `
     <a href="restaraunt.html" data-products="${products}">
                 <div class="card card1">
@@ -176,6 +215,7 @@ document.addEventListener('click', function(event) {
             containerPromo.classList.add('hide');
             mainGol.classList.add('hide');
             conRest.classList.remove('hide');
+            
             getData(`./db/${link.dataset.products}`).then(function(data){
                 data.forEach(createCardGood);
             });
@@ -183,7 +223,7 @@ document.addEventListener('click', function(event) {
     }
 });
 
-    createCardRestaurant();
+createCardRestaurant();
         
 
 function createCardGood( {description,
@@ -193,8 +233,8 @@ function createCardGood( {description,
     price} ) {
     const card = document.createElement('div');
     card.className = 'card cardtow wow animate__animated animate__fadeInUp';
-
     
+    restarauntTitle.textContent = name;
 
     card.insertAdjacentHTML('beforeend',`
        
@@ -221,6 +261,30 @@ logo.addEventListener('click', function(){
     conRest.textContent = '';
 });
 
+
+// function init(){
+    // inputSearch.addEventListener('keypress', function(event){
+    //     if(event.charCode === 13) {
+    //         getData('./db/partners.json').then(function(data){ 
+    //             const linkProducts = data.map(function(partner) {
+    //                 return partner.products;
+    //             });
+    //             console.log(linkProducts);
+    //         })
+    //     }
+        
+    // })
+// }
+
+// init();
+// function init() {
+    
+//     inputSearch.addEventListener('keypress', function(event){
+//         console.log(event);
+//     })
+
+// }
+// init();
 
 new Swiper('.swiper-container',{
     sliderPerView: 1,
