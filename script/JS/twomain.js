@@ -14,6 +14,129 @@ const logo = document.querySelector(".logo");
 const cardRest = document.querySelector(".card-rest");
 const inputSearch = document.querySelector(".search-main");
 const restarauntTitle = document.querySelector(".titlerest");
+const cartBtn = document.querySelector('.btn2');
+const korzina = document.querySelector('.korzina');
+const close = document.querySelector('.close');
+const korzinaBody = document.querySelector('.korzina-body');
+const foodRow = document.querySelector('food-row');
+const modalPrice = document.querySelector('.pricetag');
+const btn2 = document.querySelector('.clearbtn');
+
+const cart = [];
+
+window.addEventListener('load', function() {
+    const cartData = localStorage.getItem('cart');
+    if (cartData) {
+        cart.push(...JSON.parse(cartData));
+        renderCart();
+    }
+});
+
+function renderCart(){
+    korzinaBody.textContent = '';
+    
+    cart.forEach(function( { id, title, cost, count } ){
+        const itemCart = `
+                <div class="food-row">
+                    <span class="food-name">${title}</span>
+                    <strong class="food-price">${cost}</strong>
+                    <div class="food-counter">
+                        <button class="counter-button counter-plus" data-id=${id}>+</button>
+                        <span class="counter">${count}</span>
+                        <button class="counter-button counter-minus" data-id=${id}>-</button>
+                    </div>
+                </div>
+        `;
+        korzinaBody.insertAdjacentHTML('afterbegin', itemCart);
+    })
+    const totalPrice = cart.reduce(function(result, item){ 
+        return result + (parseFloat(item.cost) * item.count); 
+    }, 0)
+    modalPrice.textContent = totalPrice;
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function changeCount(event){
+    const target = event.target;
+
+    if(target.classList.contains('counter-button')){
+        const food = cart.find(function(item){
+            return item.id === target.dataset.id;
+        });
+        if(target.classList.contains('counter-minus')){
+            food.count--;
+            if(food.count === 0) {
+                cart.splice(cart.indexOf(food), 1)
+            }   
+        }
+    
+        if(target.classList.contains('counter-plus')){
+            const food = cart.find(function(item){
+                return item.id === target.dataset.id;
+            });
+            food.count++;
+        }
+        renderCart();
+    }
+
+    
+}
+
+btn2.addEventListener('click', function(){
+    cart.length = 0;
+    renderCart();
+})
+
+korzinaBody.addEventListener('click', changeCount)
+
+cartBtn.addEventListener("click", function () {
+    renderCart();
+    korzina.classList.add("is-open");
+})
+
+close.addEventListener("click", function (event) {
+    korzina.classList.remove("is-open");
+})
+
+
+
+cardRest.addEventListener('click', addToCart);
+
+
+function addToCart(event){
+    const target = event.target;
+
+    const buttonAddToCart = target.closest('.btn2-rest');
+
+    console.log(buttonAddToCart);
+
+    if(buttonAddToCart){
+        const cardKor = target.closest('.card');
+        const title = cardKor.querySelector('.p1').textContent;
+        const cost = cardKor.querySelector('.price-p').textContent;
+        const id = buttonAddToCart.id;
+
+        const food = cart.find(function(item){
+            return item.id === id;
+        })
+
+        if(food){
+            food.count += 1;
+        } else{
+            cart.push({
+                id: id,
+                title: title,
+                cost: cost,
+                count: 1
+            });
+        }
+
+        
+
+        
+        console.log(cart);
+    }
+};
 
 inputSearch.addEventListener('keypress', function(event){
 
@@ -170,7 +293,7 @@ function createCardRestaurant(restaraunt) {
 
 
     } = restaraunt;
-
+    restarauntTitle.textContent = name;
     // console.log(image)
     
     const card = `
@@ -230,11 +353,14 @@ function createCardGood( {description,
     
     image,
     name,
-    price} ) {
+    price,
+    id} 
+    )
+    {
     const card = document.createElement('div');
     card.className = 'card cardtow wow animate__animated animate__fadeInUp';
     
-    restarauntTitle.textContent = name;
+    
 
     card.insertAdjacentHTML('beforeend',`
        
@@ -242,7 +368,7 @@ function createCardGood( {description,
             <p class="p1">${name}</p>
             <p class="p2">${description}</p>
             <div class="cup-price">
-                <button class="btn2-rest">В корзину<img src="assets/img/icon-container.svg"></button>
+                <button class="btn2-rest" id="${id}">В корзину<img src="assets/img/icon-container.svg"></button>
                 <p class="price-p">${price} UAH</p>
             </div>
         
