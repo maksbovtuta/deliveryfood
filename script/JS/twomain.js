@@ -1,3 +1,4 @@
+
 const ButtonAuth = document.querySelector(".button-auth");
 const modalAuth = document.querySelector(".modal-auth");
 const ButtonAuthCancel = document.querySelector(".button-auth-cancel");
@@ -21,7 +22,32 @@ const korzinaBody = document.querySelector('.korzina-body');
 const foodRow = document.querySelector('food-row');
 const modalPrice = document.querySelector('.pricetag');
 const btn2 = document.querySelector('.clearbtn');
+const btnOffer = document.querySelector('.offbtn');
 
+
+
+
+btnOffer.addEventListener('click', function() {
+    sendOrderToDatabase();
+});
+
+async function sendOrderToDatabase() {
+    try {
+        const response = await axios.post('https://devfood-4bb64-default-rtdb.europe-west1.firebasedatabase.app/Offer.json', {
+            cart
+        });
+
+        if (response.status === 200) {
+            cart.length = 0;
+            renderCart();
+            korzina.classList.remove("is-open");
+            alert('Ваше замовлення відправлено!!')
+        }
+    } catch (error) {
+        alert('Щось пішло не так :(')
+        
+    }
+}
 const cart = [];
 
 window.addEventListener('load', function() {
@@ -34,7 +60,6 @@ window.addEventListener('load', function() {
 
 function renderCart(){
     korzinaBody.textContent = '';
-    
     cart.forEach(function( { id, title, cost, count } ){
         const itemCart = `
                 <div class="food-row">
@@ -58,7 +83,6 @@ function renderCart(){
 
 function changeCount(event){
     const target = event.target;
-
     if(target.classList.contains('counter-button')){
         const food = cart.find(function(item){
             return item.id === target.dataset.id;
@@ -78,8 +102,6 @@ function changeCount(event){
         }
         renderCart();
     }
-
-    
 }
 
 btn2.addEventListener('click', function(){
@@ -98,28 +120,20 @@ close.addEventListener("click", function (event) {
     korzina.classList.remove("is-open");
 })
 
-
-
 cardRest.addEventListener('click', addToCart);
-
 
 function addToCart(event){
     const target = event.target;
-
     const buttonAddToCart = target.closest('.btn2-rest');
-
     console.log(buttonAddToCart);
-
     if(buttonAddToCart){
         const cardKor = target.closest('.card');
         const title = cardKor.querySelector('.p1').textContent;
         const cost = cardKor.querySelector('.price-p').textContent;
         const id = buttonAddToCart.id;
-
         const food = cart.find(function(item){
             return item.id === id;
         })
-
         if(food){
             food.count += 1;
         } else{
@@ -130,18 +144,11 @@ function addToCart(event){
                 count: 1
             });
         }
-
-        
-
-        
         console.log(cart);
     }
 };
 
 inputSearch.addEventListener('keypress', function(event){
-
-    
-
     if(event.charCode === 13) {
         const value = event.target.value.trim();
 
@@ -277,7 +284,6 @@ function checkAuth(){
     
 }
 
-
 checkAuth();
 
 function createCardRestaurant(restaraunt) {
@@ -325,9 +331,6 @@ function createCardRestaurant(restaraunt) {
     cardsRestaurants.insertAdjacentHTML('beforeend', card)
 }
 
-
-
-
 document.addEventListener('click', function(event) {
     const restaurantCard = event.target.closest('.card');
 
@@ -348,7 +351,6 @@ document.addEventListener('click', function(event) {
 
 createCardRestaurant();
         
-
 function createCardGood( {description,
     
     image,
